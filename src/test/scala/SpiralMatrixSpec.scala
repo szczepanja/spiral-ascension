@@ -6,8 +6,11 @@ class SpiralMatrixSpec extends AnyFlatSpec with should.Matchers {
 
   import SpiralMatrix._
 
-  "spiralMatrix" should "given the size, return a square matrix of numbers in spiral order" in {
-    spiralMatrix(3) shouldBe List(List(1, 2, 3), List(8, 9, 4), List(7, 6, 5))
+  "nextDirection" should "show next direction" in {
+    nextDirection(Up) shouldBe (Right)
+    nextDirection(Right) shouldBe (Down)
+    nextDirection(Down) shouldBe (Left)
+    nextDirection(Left) shouldBe (Up)
   }
 
 }
