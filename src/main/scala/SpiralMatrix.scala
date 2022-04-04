@@ -19,13 +19,13 @@ object SpiralMatrix extends App {
     case Left => Up
   }
 
-  def spiralMatrix(steps: Int): List[List[Int]] = {
+  def spiralMatrix(steps: Int) = {
     var step = 0
     var x = 0
     var y = 0
     var maxSteps = steps
     var direction: Direction = Right
-    var spiral: mutable.Map[(Int, Int), Int] = mutable.Map()
+    val spiral: mutable.Map[(Int, Int), Int] = mutable.Map()
 
     for (i <- 1 to (steps * steps)) {
       step += 1
@@ -36,7 +36,14 @@ object SpiralMatrix extends App {
         }
         step = 0
       }
+
+      spiral += ((x, y) -> i)
+      direction match {
+        case Right => x += 1
+        case Down => y -= 1
+        case Left => x -= 1
+        case Up => y += 1
+      }
     }
   }
-
 }
